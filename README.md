@@ -16,6 +16,32 @@ Oh no! An intern with too much curiosity and not enough caution has accidentally
 #### 1. System Design
 ##### Requirements
 
+%%{init: {'theme':'dark'}}%%
+flowchart LR
+    CDN["🌐 Global CDN"]:::cdn -->|Static Assets| Region1["🌎 US-East"]
+    CDN -->|Static Assets| Region2["🌍 EU-West"]
+    
+    Region1 --> LB1["🔄 Load Balancer"]:::region
+    Region2 --> LB2["🔄 Load Balancer"]:::region
+    
+    LB1 --> WS1["🔧 Web Servers"]:::region
+    LB2 --> WS2["🔧 Web Servers"]:::region
+    
+    WS1 --> AS1["💻 App Servers"]:::region
+    WS2 --> AS2["💻 App Servers"]:::region
+    
+    AS1 <--> DB1["🗄️ Database Cluster"]:::db
+    AS2 <--> DB2["🗄️ Database Cluster"]:::db
+    
+    DB1 <-->|"🌉 Multi-Master<br/>Replication"| DB2
+    
+    AS1 <--> Orch1["🎼 Orchestra<br/><i>Multi-tenant Config</i>"]:::region
+    AS2 <--> Orch2["🎼 Orchestra<br/><i>Multi-tenant Config</i>"]:::region
+    
+    Orch1 <--> HS["🔗 HubSpot API"]...
+
+Something went wrong, please try again.
+
 **High-Level Architecture Diagram:**
 
 ```mermaid

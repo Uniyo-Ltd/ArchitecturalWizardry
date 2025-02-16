@@ -1,50 +1,22 @@
-markdown
-# ArchitecturalWizardry
 
-## GoMark System Design Document
+Here's an enhanced version of the GoMark System Design Document in Markdown, designed to be both informative and visually appealing:
 
-### Background
-Welcome to **GoMark**, where sales soar and portfolios thrive! Picture this: Balco, a company that loves to collect and nurture software businesses, has crafted a magical suite to make business operations as smooth as butter. Within this suite lies **GoMark**, the go-to-market wizard, offering:
+GoMark System Design Document
+Background
+Welcome to GoMark, where sales soar and portfolios thrive! Picture this: Balco, a company that loves to collect and nurture software businesses, has crafted a magical suite to make business operations as smooth as butter. Within this suite lies GoMark, the go-to-market wizard, offering:
 
-- **Pipeline Tracking** - See your sales funnels in real-time, like watching a live performance!
-- **Upsell Outreach** - Automatically emails those high-priority customers, making upgrades feel like a gift.
+Pipeline Tracking - See your sales funnels in real-time, like watching a live performance!
+Upsell Outreach - Automatically emails those high-priority customers, making upgrades feel like a gift.
 
-### Problem Statement
+Problem Statement
 Oh no! An intern with too much curiosity and not enough caution has accidentally deleted all of GoMark's code and infrastructure. The challenge? Rebuild this magical platform from scratch, but this time, make it even better for 20+ portfolio companies!
 
-### Tasks
-#### 1. System Design
-##### Requirements
+Tasks
+1. System Design
+Requirements
+High-Level Architecture Diagram:
 
-%%{init: {'theme':'dark'}}%%
-flowchart LR
-    CDN["🌐 Global CDN"]:::cdn -->|Static Assets| Region1["🌎 US-East"]
-    CDN -->|Static Assets| Region2["🌍 EU-West"]
-    
-    Region1 --> LB1["🔄 Load Balancer"]:::region
-    Region2 --> LB2["🔄 Load Balancer"]:::region
-    
-    LB1 --> WS1["🔧 Web Servers"]:::region
-    LB2 --> WS2["🔧 Web Servers"]:::region
-    
-    WS1 --> AS1["💻 App Servers"]:::region
-    WS2 --> AS2["💻 App Servers"]:::region
-    
-    AS1 <--> DB1["🗄️ Database Cluster"]:::db
-    AS2 <--> DB2["🗄️ Database Cluster"]:::db
-    
-    DB1 <-->|"🌉 Multi-Master<br/>Replication"| DB2
-    
-    AS1 <--> Orch1["🎼 Orchestra<br/><i>Multi-tenant Config</i>"]:::region
-    AS2 <--> Orch2["🎼 Orchestra<br/><i>Multi-tenant Config</i>"]:::region
-    
-    Orch1 <--> HS["🔗 HubSpot API"]...
-
-Something went wrong, please try again.
-
-**High-Level Architecture Diagram:**
-
-```mermaid
+mermaid
 %%{init: {'theme':'forest'}}%%
 flowchart TD
     subgraph Portfolio["Portfolio Companies"]
@@ -57,12 +29,12 @@ flowchart TD
         LB["Load Balancer"]:::core
         WS["Web Server<br/><i>Nginx/Apache</i>"]:::core
         AS["Application Server<br/><i>Go/Python</i>"]:::core
-        DB["Multi-tenant Database<br/><i>[PostgreSQL](https://x.com/i/grok?text=PostgreSQL)</i>"]:::core
+        DB["Multi-tenant Database<br/><i>PostgreSQL</i>"]:::core
     end
     
     subgraph External["External Services"]
-        HS["[HubSpot API](https://x.com/i/grok?text=HubSpot%20API)"]:::external
-        UA["[Upso API](https://x.com/i/grok?text=Upso%20API)"]:::external
+        HS["HubSpot API"]:::external
+        UA["Upso API"]:::external
     end
     
     subgraph Config["Configuration Management"]
@@ -175,7 +147,6 @@ flowchart LR
 Monitoring and Observability:
 Tools: Prometheus (metrics), Grafana (visuals), ELK Stack (logs), New Relic (app performance), Sentry (error tracking).
 Practices: Real-time metrics, automated alerts, log analysis, health checks for a healthy system heartbeat.
-
 Programming Languages:
 Web Server: C (Nginx/Apache) - because performance should be as swift as a ninja.
 Application Server: Go - for when you need speed and concurrency like a pro gamer.
@@ -189,7 +160,7 @@ One server to rule them all, SQLite for simplicity, local assets, and basic moni
 Preventing Inconsistent Configurations:
 Lock down with IAM, use webhooks as spies, and sync regularly like a well-oiled machine.
 
-**Note:** 
-- Ensure your repository uses GitHub, as other platforms might not natively support Mermaid rendering in READMEs. 
-- GitHub will render Mermaid diagrams if they are correctly wrapped in ```mermaid code blocks. However, for some complex diagrams or custom themes, you might need to check if GitHub's Mermaid support includes all the features you're using.
-- If the diagrams don't render, GitHub might still be updating its Mermaid support, or there might be a syntax issue. Always test in GitHub's markdown preview or live view to ensure it works.
+Deliverables
+This document, now in your Git repository, showcasing our architectural magic and infrastructural wizardry. Enjoy the show!
+
+This document is set up with Mermaid diagrams for visualization. To see these diagrams rendered, ensure your Git platform supports Mermaid or use a tool that does. Now, go forth and rebuild GoMark with flair!
